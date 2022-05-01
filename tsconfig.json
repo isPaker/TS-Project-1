@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {  //编译选项
+    "target": "ES2016", //?
+    "lib": ["ES2016"],  //?
+    "outDir": "./dist", //编译后文件的放置位置
+    "strictNullChecks": true, //更加严格的空类型检查
+  },
+  "include": ["./src"],  //需要编译的文件路径
+}
