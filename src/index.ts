@@ -4,33 +4,46 @@ Card表示扑克牌
 Color表示花色
 Poke表示一副扑克牌
 */
-type Card = {
-    color: Color
-    num: number
+// 使用枚举
+enum Color {
+    spade = "♠",
+    heart = "♥",
+    club = "♣",
+    diamond = "♦"
 }
-type Color = "♠" | "♥" | "♣" | "♦";
+enum Num {
+    A = "A",
+    two = "2",
+    three = "3",
+    four = "4",
+    five = "5",
+    six = "6",
+    seven = "7",
+    eight = "8",
+    nine = "9",
+    ten = "10",
+    eleven = "J",
+    twelve = "Q",
+    thirteen = "K"
+}
+type Card = {
+    color: Color,
+    num: Num
+}
 
 type Poker = Card[]
 
 function createPoker():Poker {
     const poker: Poker = [];
-    for(let i=1; i<=13; i++){
-        poker.push({
-            num: i,
-            color: "♠"
-        })
-        poker.push({
-            num: i,
-            color: "♥"
-        })
-        poker.push({
-            num: i,
-            color: "♣"
-        })
-        poker.push({
-            num: i,
-            color: "♦"
-        })
+    const colors = Object.values(Color);
+    const nums = Object.values(Num);
+    for (const num of nums) {
+        for (const color of colors) {
+            poker.push({
+                color,
+                num
+            })
+        }
     }
     return poker;
 }
@@ -38,18 +51,7 @@ function createPoker():Poker {
 function printPoker(poker: Poker){
     let result = "\n";
     poker.forEach(card => {
-        let str = card.color;
-        if(card.num === 1){
-            str += "A";
-        }else if(card.num <= 10 && card.num > 1){
-            str += card.num;
-        }else if(card.num === 11){
-            str += "J";
-        }else if(card.num === 12){
-            str += "Q";
-        }else if(card.num === 13){
-            str += "K";
-        }
+        let str = card.color + card.num;
         result += str + "\t";
     })
     console.log(result)
