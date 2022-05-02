@@ -1,9 +1,12 @@
 {
   "compilerOptions": {  //编译选项
-    "target": "ES2016", //?
-    "lib": ["ES2016"],  //?
+    "target": "ES2016", //配置编译代码的版本标准
+    "module": "commonjs", //配置编译代码使用的模块化标准
+    "lib": ["ES2016"],  //?环境
     "outDir": "./dist", //编译后文件的放置位置
     "strictNullChecks": true, //更加严格的空类型检查
+    "removeComments": true, //移除注释
+    "moduleResolution": "Node", //设置解析模块方式
   },
   "include": ["./src"],  //需要编译的文件路径
 }
